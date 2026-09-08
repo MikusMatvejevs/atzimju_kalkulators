@@ -2,12 +2,10 @@ package Pakotne;
 
 import java.util.Scanner;
 
-import java.util.Scanner;
-
 public class Kalkulators {
 
 	public static void main(String[] args) {
-		int skoleni;
+		int skoleni, kriterijisk;
 		Scanner scan = new Scanner(System.in);
 		
 		do {
@@ -18,6 +16,13 @@ public class Kalkulators {
 			}
 		} while (skoleni==0 || skoleni < 0);
 		
+		do {
+			System.out.println("Cik daudz kritēriji?");
+			kriterijisk = scan.nextInt();
+			if (kriterijisk ==0 || kriterijisk < 0) {
+				System.out.println("Kļūda! Nekorekti ievadīts kritēriju skaits!");
+			}
+		} while (kriterijisk==0 || kriterijisk < 0);
 	}
 
 }
