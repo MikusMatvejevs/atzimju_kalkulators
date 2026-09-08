@@ -9,22 +9,25 @@ public class Kalkulators {
 		int skoleni, kriterijisk;
 		Scanner scan = new Scanner(System.in);
 		
+		 // Skolēnu skaita ievade
 		do {
 			System.out.println("Ievadiet skolēnu skaitu: ");
 			skoleni = scan.nextInt();
-			if (skoleni ==0 || skoleni < 0) {
+			if ( skoleni <= 0) {
 				System.out.println("Kļūda! Nekorekti ievadīts skolēnu skaits!");
 			}
-		} while (skoleni==0 || skoleni < 0);
+		} while (skoleni <= 0);
 		
+		 // Kritēriju skaita ievade
 		do {
 			System.out.println("Cik daudz kritēriji?");
 			kriterijisk = scan.nextInt();
-			if (kriterijisk ==0 || kriterijisk < 0) {
+			if (kriterijisk <= 0) {
 				System.out.println("Kļūda! Nekorekti ievadīts kritēriju skaits!");
 			}
-		} while (kriterijisk==0 || kriterijisk < 0);
+		} while (kriterijisk <= 0);
 		
+		// Kritēriju nosaukumi
 		String[] kriterijs = new String[kriterijisk];
 		scan.nextLine(); 
 		
@@ -35,12 +38,13 @@ public class Kalkulators {
 			System.out.println((i+1) + ".kritērijs: ");
 			kriterijs [i] = scan.nextLine();
 			vards = kriterijs[i];
-			if (!vards.equals(null) && vards.equals(" ")) {
-				System.out.println("Kļūda! Nekorekti ievadīts kritērija nosaukums!");
-			}
+				if (!vards.equals(null) && vards.equals(" ")) {
+					System.out.println("Kļūda! Nekorekti ievadīts kritērija nosaukums!");
+				}
 			}
 		}while(!vards.equals(null) && vards.equals(""));
 		
+		 // Kritēriju procentuālais svars
 		int[] procenti = new int[kriterijisk];
 		int summa;
 
@@ -61,6 +65,7 @@ public class Kalkulators {
 		
         int[] atzimes = new int[skoleni * kriterijisk];
         
+        // Atzīmju ievade
         for (int j = 0; j < skoleni; j++) {
             System.out.println();
             System.out.println((j + 1) + ". skolēns:");
@@ -77,6 +82,7 @@ public class Kalkulators {
             }
         }
 		
+        // Gala vērtējuma aprēķins
         DecimalFormat df = new DecimalFormat("#.##");
         for (int j = 0; j < skoleni; j++) {
             double rezultats = 0;
