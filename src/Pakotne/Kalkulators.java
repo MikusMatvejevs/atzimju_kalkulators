@@ -58,6 +58,25 @@ public class Kalkulators {
 		    }
 		} while (summa > 100 || summa != 100);
 		
+		int [] atzimes = new int [skoleni*kriterijisk];
+		int sk = 0;
+		int j;
+		
+			for (j=0; j < skoleni; j++) {
+				for(i=0; i<kriterijisk; i++) {
+					do {	
+					System.out.println("Kādu atzīmi " + (i+1) + ". skolēns dabūja šajā kritērijā: " + kriterijs[j] + "?");
+					atzimes[i] = scan.nextInt();
+					sk = atzimes[i];
+					if(!(String.valueOf(sk)== "") && sk < 0) {
+						System.out.println("Nekorekti ievadīta atzīme!");
+					}
+					}while(!(String.valueOf(sk)== "") && sk<0);
+				}
+				
+			}
+			System.out.println(atzimes);
+		
 		scan.close();
 	}
 
