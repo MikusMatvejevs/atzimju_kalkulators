@@ -58,26 +58,32 @@ public class Kalkulators {
 		    }
 		} while (summa > 100 || summa != 100);
 		
-		int [] atzimes = new int [skoleni*kriterijisk];
-		int sk = 0;
-		int j;
+        int[] atzimes = new int[skoleni * kriterijisk];
+        
+        for (int j = 0; j < skoleni; j++) {
+            System.out.println();
+            System.out.println((j + 1) + ". skolēns:");
+            for (i = 0; i < kriterijisk; i++) {
+                int atzime;
+                do {
+                    System.out.println("Kādu atzīmi " + (j + 1) + ". skolēns dabūja kritērijā \"" + kriterijs[i] + "\"?");
+                    atzime = scan.nextInt();
+                    if (atzime < 0) {
+                    	System.out.println("Nekorekti ievadīta atzīme!");
+                    }
+                } while (atzime < 0);
+                atzimes[j * kriterijisk + i] = atzime;
+            }
+        }
 		
-			for (j=0; j < skoleni; j++) {
-				for(i=0; i<kriterijisk; i++) {
-					do {	
-					System.out.println("Kādu atzīmi " + (i+1) + ". skolēns dabūja šajā kritērijā: " + kriterijs[j] + "?");
-					atzimes[i] = scan.nextInt();
-					sk = atzimes[i];
-					if(!(String.valueOf(sk)== "") && sk < 0) {
-						System.out.println("Nekorekti ievadīta atzīme!");
-					}
-					}while(!(String.valueOf(sk)== "") && sk<0);
-				}
-				
-			}
-			System.out.println(atzimes);
-		
-		scan.close();
+        for (int j = 0; j < skoleni; j++) {
+            double rezultats = 0;
+            for (i = 0; i < kriterijisk; i++) {
+                rezultats += atzimes[j * kriterijisk + i] * procenti[i] / 100.00;
+            }
+            System.out.println((j + 1) + ". skolēna gala vērtējums: " + rezultats);
+        }
+        scan.close();	
 	}
 
 }
