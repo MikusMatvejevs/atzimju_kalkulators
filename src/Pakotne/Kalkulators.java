@@ -1,5 +1,6 @@
 package Pakotne;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Kalkulators {
@@ -76,12 +77,13 @@ public class Kalkulators {
             }
         }
 		
+        DecimalFormat df = new DecimalFormat("#.##");
         for (int j = 0; j < skoleni; j++) {
             double rezultats = 0;
             for (i = 0; i < kriterijisk; i++) {
                 rezultats += atzimes[j * kriterijisk + i] * procenti[i] / 100.00;
             }
-            System.out.println((j + 1) + ". skolēna gala vērtējums: " + rezultats);
+            System.out.println((j + 1) + ". skolēna gala vērtējums: " +df.format(rezultats));
         }
         scan.close();	
 	}
