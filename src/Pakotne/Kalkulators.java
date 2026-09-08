@@ -34,11 +34,29 @@ public class Kalkulators {
 			System.out.println((i+1) + ".kritērijs: ");
 			kriterijs [i] = scan.nextLine();
 			vards = kriterijs[i];
-			if (vards == null || vards.equals(" ")) {
+			if (!vards.equals(null) && vards.equals(" ")) {
 				System.out.println("Kļūda! Nekorekti ievadīts kritērija nosaukums!");
 			}
 			}
-		}while(!(vards == null || vards.equals("")));
+		}while(!vards.equals(null) && vards.equals(""));
+		
+		int[] procenti = new int[kriterijisk];
+		int summa;
+
+		do {
+		    summa = 0;
+		    for (i = 0; i < kriterijisk; i++) {
+		        System.out.println("Cik svarīgs ir " + kriterijs[i] + " kritērijs?");
+		        procenti[i] = scan.nextInt();
+		        summa += procenti[i];
+		    }
+		    if (summa > 100) {
+		        System.out.println("Kritēriju kopējais svars nedrīkst pārsniegt 100%!");
+		    }
+		    if (summa != 100) {
+		        System.out.println("Kritēriju kopējais svars jāsasniedz 100%!");
+		    }
+		} while (summa > 100 || summa != 100);
 		
 		scan.close();
 	}
