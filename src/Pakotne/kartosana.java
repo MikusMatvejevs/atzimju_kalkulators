@@ -6,9 +6,10 @@ import java.util.Scanner;
 
 public class kartosana {
 
-    public static void main(String[] args) {
+    static void kartot() {
 
         Scanner dati = new Scanner(System.in);
+
         ArrayList<Double> atzimes = nolasitd.nolasit_gala();
 
         System.out.println("1 - Kārtot augošā secībā\n"
@@ -16,12 +17,14 @@ public class kartosana {
                 + "3 - Atcelt");
 
         int ievade = dati.nextInt();
+
         switch (ievade) {
 
         case 1:
             Collections.sort(atzimes);
+
             System.out.println("Atzīmes augošā secībā:");
-            
+
             for (double atzime : atzimes) {
                 System.out.println(atzime);
             }
@@ -29,7 +32,9 @@ public class kartosana {
 
         case 2:
             Collections.sort(atzimes, Collections.reverseOrder());
+
             System.out.println("Atzīmes dilstošā secībā:");
+
             for (double atzime : atzimes) {
                 System.out.println(atzime);
             }
@@ -43,7 +48,6 @@ public class kartosana {
             System.out.println("Tāda darbība neeksistē!");
             break;
         }
-
         dati.close();
     }
 }

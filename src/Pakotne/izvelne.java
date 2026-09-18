@@ -10,10 +10,10 @@ public class izvelne {
         int izvele;
 
         do {
-            System.out.println("\n1 - Ievadīt skolēnu atzīmes"
-                    + "\n2 - Apskatīt saglabātos rezultātus"
-                    + "\n3 - Kārtot gala vērtējumus"
-                    + "\n4 - Beigt darbu");
+            System.out.println("1 - Ievadīt skolēnu atzīmes");
+            System.out.println("2 - Apskatīt saglabātos rezultātus");
+            System.out.println("3 - Kārtot gala vērtējumus");
+            System.out.println("4 - Beigt darbu");
 
             izvele = scan.nextInt();
 
@@ -39,9 +39,8 @@ public class izvelne {
                 System.out.println("Tāda darbība neeksistē!");
                 break;
             }
-
+            
         } while (izvele != 4);
-
-        scan.close();
-    }
+       scan.close();
+    } 
 }
