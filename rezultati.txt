@@ -1,0 +1,10 @@
+1. skolēns:
+MD: 4 (40%)
+PD: 8 (60%)
+Gala vērtējums: 6.4
+
+2. skolēns:
+MD: 2 (40%)
+PD: 10 (60%)
+Gala vērtējums: 6.8
+

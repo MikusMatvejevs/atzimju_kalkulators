@@ -2,7 +2,9 @@ package Pakotne;
 
 public class KriterijuSvarsUnNosaukumi {
 
+	
 	static String[] MetodeName(int kriterijisk) {
+		izvelne.scan.nextLine();
 		String[] kriterijs = new String[kriterijisk];
 
 		int i;
