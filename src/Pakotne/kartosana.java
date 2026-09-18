@@ -8,6 +8,9 @@ public class kartosana {
     static void kartot() {
 
         ArrayList<Double> atzimes = nolasitd.nolasit_gala();
+        if (atzimes.isEmpty()) {
+            return;
+        }
 
         System.out.println("1 - Kārtot augošā secībā\n"
                 + "2 - Kārtot dilstošā secībā\n"

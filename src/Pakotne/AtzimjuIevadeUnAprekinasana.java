@@ -1,12 +1,10 @@
 package Pakotne;
 
 import java.text.DecimalFormat;
-import java.util.Scanner;
 
 public class AtzimjuIevadeUnAprekinasana {
 
 	static int[] Grade(int skoleni, int kriterijisk, String[] kriterijs){
-		Scanner scan = new Scanner(System.in);
 		int[] atzimes = new int[skoleni * kriterijisk];
 	    for (int j = 0; j < skoleni; j++) {
             System.out.println();
@@ -15,7 +13,7 @@ public class AtzimjuIevadeUnAprekinasana {
                 int atzime;
                 do {
                     System.out.println("Kādu atzīmi " + (j + 1) + ". skolēns dabūja kritērijā \"" + kriterijs[i] + "\"?");
-                    atzime = scan.nextInt();
+                    atzime = izvelne.scan.nextInt();
                     if (atzime < 0 || atzime > 10) {
                     	System.out.println("Nekorekti ievadīta atzīme!");
                     }
@@ -24,8 +22,6 @@ public class AtzimjuIevadeUnAprekinasana {
             }
            
         }
-	    
-	    scan.close();
 		return atzimes;
 	}
 	
