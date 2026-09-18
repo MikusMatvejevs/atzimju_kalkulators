@@ -2,13 +2,10 @@ package Pakotne;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Scanner;
 
 public class kartosana {
 
     static void kartot() {
-
-        Scanner dati = new Scanner(System.in);
 
         ArrayList<Double> atzimes = nolasitd.nolasit_gala();
 
@@ -16,7 +13,7 @@ public class kartosana {
                 + "2 - Kārtot dilstošā secībā\n"
                 + "3 - Atcelt");
 
-        int ievade = dati.nextInt();
+        int ievade = izvelne.scan.nextInt();
 
         switch (ievade) {
 
@@ -48,6 +45,5 @@ public class kartosana {
             System.out.println("Tāda darbība neeksistē!");
             break;
         }
-        dati.close();
     }
 }
