@@ -4,64 +4,27 @@ import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class Kalkulators {
-
+	
 	public static void main(String[] args) {
 		int skoleni, kriterijisk;
 		Scanner scan = new Scanner(System.in);
 		
-		 // Skolēnu skaita ievade
-		do {
-			System.out.println("Ievadiet skolēnu skaitu: ");
-			skoleni = scan.nextInt();
-			if ( skoleni <= 0) {
-				System.out.println("Kļūda! Nekorekti ievadīts skolēnu skaits!");
-			}
-		} while (skoleni <= 0);
 		
-		 // Kritēriju skaita ievade
-		do {
-			System.out.println("Cik daudz kritēriji?");
-			kriterijisk = scan.nextInt();
-			if (kriterijisk <= 0) {
-				System.out.println("Kļūda! Nekorekti ievadīts kritēriju skaits!");
-			}
-		} while (kriterijisk <= 0);
+		
+		
+		 // Kritēriju un skolēnu skaita ievade
+		kriterijisk = DaudzumaIevade.SkIevade("Cik daudz kritēriji?");
+		skoleni = DaudzumaIevade.SkIevade("Cik daudz skolēni?");
+		
 		
 		// Kritēriju nosaukumi
-		String[] kriterijs = new String[kriterijisk];
-		scan.nextLine(); 
+		//String[] kriterijs = new String[kriterijisk];
+		//scan.nextLine(); 
 		
-		int i;
-		String vards = null;
-		do {
-			for (i=0; i<kriterijisk; i++) {
-			System.out.println((i+1) + ".kritērijs: ");
-			kriterijs [i] = scan.nextLine();
-			vards = kriterijs[i];
-				if (!vards.equals(null) && vards.equals(" ")) {
-					System.out.println("Kļūda! Nekorekti ievadīts kritērija nosaukums!");
-				}
-			}
-		}while(!vards.equals(null) && vards.equals(""));
+	String[] kriterijs = KriterijuSvarsUnNosaukumi.MetodeName(kriterijisk);
+	int[] procenti = KriterijuSvarsUnNosaukumi.MetodeSvars(kriterijisk, kriterijs);
 		
-		 // Kritēriju procentuālais svars
-		int[] procenti = new int[kriterijisk];
-		int summa;
-
-		do {
-		    summa = 0;
-		    for (i = 0; i < kriterijisk; i++) {
-		        System.out.println("Cik svarīgs ir " + kriterijs[i] + " kritērijs?");
-		        procenti[i] = scan.nextInt();
-		        summa += procenti[i];
-		    }
-		    if (summa > 100) {
-		        System.out.println("Kritēriju kopējais svars nedrīkst pārsniegt 100%!");
-		    }
-		    if (summa != 100) {
-		        System.out.println("Kritēriju kopējais svars jāsasniedz 100%!");
-		    }
-		} while (summa > 100 || summa != 100);
+		
 		
         int[] atzimes = new int[skoleni * kriterijisk];
         
@@ -69,7 +32,7 @@ public class Kalkulators {
         for (int j = 0; j < skoleni; j++) {
             System.out.println();
             System.out.println((j + 1) + ". skolēns:");
-            for (i = 0; i < kriterijisk; i++) {
+            for (int i = 0; i < kriterijisk; i++) {
                 int atzime;
                 do {
                     System.out.println("Kādu atzīmi " + (j + 1) + ". skolēns dabūja kritērijā \"" + kriterijs[i] + "\"?");
@@ -86,12 +49,34 @@ public class Kalkulators {
         DecimalFormat df = new DecimalFormat("#.##");
         for (int j = 0; j < skoleni; j++) {
             double rezultats = 0;
-            for (i = 0; i < kriterijisk; i++) {
+            for (int i = 0; i < kriterijisk; i++) {
                 rezultats += atzimes[j * kriterijisk + i] * procenti[i] / 100.00;
             }
             System.out.println((j + 1) + ". skolēna gala vērtējums: " +df.format(rezultats));
         }
-        scan.close();	
+        scan.close();
+        
+        Scanner dati = new Scanner(System.in);
+	char izv;
+		
+		do {
+			System.out.println("\n1 - Ievadīt skolēnu un kritēriju skaitu"
+							 + "\n2 - Nolasīt iepriekšējos datus"
+							 + "\n3 - Ieglabāt pašreizējos datus"
+							 + "\n4 - Datu kārtošana"
+							 + "\n5 - Gala vērtējums"
+							 + "\nx - Beigt");
+			izv = dati.next().charAt(0);
+			izv = Character.toLowerCase(izv);
+			
+		switch(izv) {	
+		
+		
+		case 'x':
+			break;
+		default: System.out.println("Neeksistē!"); break;
+		}
+        }while(izv != 'x');
 	}
 
 }
