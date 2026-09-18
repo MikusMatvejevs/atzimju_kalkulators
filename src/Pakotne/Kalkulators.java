@@ -28,55 +28,13 @@ public class Kalkulators {
 		
         int[] atzimes = new int[skoleni * kriterijisk];
         
-        // Atzīmju ievade
-        for (int j = 0; j < skoleni; j++) {
-            System.out.println();
-            System.out.println((j + 1) + ". skolēns:");
-            for (int i = 0; i < kriterijisk; i++) {
-                int atzime;
-                do {
-                    System.out.println("Kādu atzīmi " + (j + 1) + ". skolēns dabūja kritērijā \"" + kriterijs[i] + "\"?");
-                    atzime = scan.nextInt();
-                    if (atzime < 0) {
-                    	System.out.println("Nekorekti ievadīta atzīme!");
-                    }
-                } while (atzime < 0);
-                atzimes[j * kriterijisk + i] = atzime;
-            }
-        }
+        atzimes = AtzimjuIevadeUnAprekinasana.Grade(skoleni, kriterijisk, kriterijs);
 		
         // Gala vērtējuma aprēķins
-        DecimalFormat df = new DecimalFormat("#.##");
-        for (int j = 0; j < skoleni; j++) {
-            double rezultats = 0;
-            for (int i = 0; i < kriterijisk; i++) {
-                rezultats += atzimes[j * kriterijisk + i] * procenti[i] / 100.00;
-            }
-            System.out.println((j + 1) + ". skolēna gala vērtējums: " +df.format(rezultats));
-        }
+        AtzimjuIevadeUnAprekinasana.FinGrade(skoleni, kriterijisk, atzimes, procenti);
         scan.close();
         
-        Scanner dati = new Scanner(System.in);
-	char izv;
-		
-		do {
-			System.out.println("\n1 - Ievadīt skolēnu un kritēriju skaitu"
-							 + "\n2 - Nolasīt iepriekšējos datus"
-							 + "\n3 - Ieglabāt pašreizējos datus"
-							 + "\n4 - Datu kārtošana"
-							 + "\n5 - Gala vērtējums"
-							 + "\nx - Beigt");
-			izv = dati.next().charAt(0);
-			izv = Character.toLowerCase(izv);
-			
-		switch(izv) {	
-		
-		
-		case 'x':
-			break;
-		default: System.out.println("Neeksistē!"); break;
-		}
-        }while(izv != 'x');
+
 	}
 
 }
