@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Kalkulators {
 
-	public static void main(String[] args) {
+	static void aprekinat() {
 		int skoleni, kriterijisk;
 		Scanner scan = new Scanner(System.in);
 		
@@ -82,16 +82,25 @@ public class Kalkulators {
             }
         }
 		
-        // Gala vērtējuma aprēķins
+     // Gala vērtējuma aprēķins
         DecimalFormat df = new DecimalFormat("#.##");
+        double[] rezultati = new double[skoleni];
+
         for (int j = 0; j < skoleni; j++) {
             double rezultats = 0;
+
             for (i = 0; i < kriterijisk; i++) {
                 rezultats += atzimes[j * kriterijisk + i] * procenti[i] / 100.00;
             }
-            System.out.println((j + 1) + ". skolēna gala vērtējums: " +df.format(rezultats));
+
+            rezultati[j] = rezultats;
+
+            System.out.println((j + 1)
+                    + ". skolēna gala vērtējums: "
+                    + df.format(rezultats));
         }
-        scan.close();	
+
+        datne.ieglabat(skoleni,kriterijisk,kriterijs,procenti,atzimes,rezultati);
 	}
 
 }
